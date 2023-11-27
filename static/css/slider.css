@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.container {
+  padding: 2rem;
+  margin-left: 9%; /* Adjust margin as needed */
+  max-width: 40%; /* Adjust max-width as needed */
+  overflow-x: hidden;
+}
+
+.slider-wrapper {
+  position: relative;
+  max-width: 75%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.slider .slide {
+  min-width: 100%;
+}
+
+.slider img {
+  width: 800%;
+  height: auto;
+  object-fit: cover;
+}
+
+.slider-nav {
+  display: flex;
+  position: absolute;
+  bottom: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.slider-nav a {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: #fff;
+  opacity: 0.75;
+  transition: opacity ease 250ms;
+  margin-right: 0.5rem;
+}
+
+.slider-nav a:last-child {
+  margin-right: 0;
+}
+
+.slider-nav a {
+  opacity: 1;
+}

@@ -1,0 +1,170 @@
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 270px; /* Set the width to your desired value */
+    background: #343a40;
+    padding: 6px 14px;
+    white-space: nowrap;
+    transition: all 0.5s ease;
+  }
+  .sidebar .logo_content .logo {
+    color: #fff;
+    display: flex;
+    height: 50px;
+    width: 100px;
+    align-items: center;
+    opacity: 1;
+  }
+  .logo_content .logo i {
+    font-size: 28px;
+    margin-right: 5px;
+  }
+  .logo_content .logo .logo_name {
+    font-size: 20px;
+    font-weight: 400;
+    white-space: nowrap;
+    
+  }
+  .sidebar ul {
+    margin-top: 0px;
+  }
+  .sidebar ul li {
+    position: relative;
+    height: 75px;
+    width: 100%;
+    margin: 0 5px;
+    list-style: none;
+    line-height: 50px;
+  }
+  .sidebar ul li:hover .tooltip {
+    transition: all 0.5s ease;
+    opacity: 1;
+    top: 50%;
+  }
+  .sidebar ul li a {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.4s ease;
+    border-radius: 12px;
+    white-space: nowrap;
+  }
+  .sidebar ul li a:hover {
+    color: #11101d;
+    background: #fff;
+  }
+  .sidebar ul li i {
+    height: 50px;
+    min-width: 50px;
+    border-radius: 12px;
+    line-height: 50px;
+    text-align: center;
+  }
+  .sidebar .links_name {
+    opacity: 1;
+    pointer-events: auto;
+  }
+</style>
+
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" style="left: 270px;">
+  <a class="navbar-brand" href="/">MEXICO RURAL HEALTH UNIT</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav ml-auto"></ul>
+    {% if user.is_authenticated %}
+      <a class="btn btn-danger mr-2" href="{% url 'logout' %}">Logout</a>
+    {% else %}
+      <a class="btn btn-primary mr-2" href="{% url 'login' %}">Login </a>
+    {% endif %}
+    <div class="sidebar">
+      <div class="logo_content">
+        <div class="logo">
+          <div class="logo_name" style="text-align: center;">
+            <a href="{% url 'dashboard' %}" style="text-decoration: none; color: inherit;">
+              DASHBOARD
+            </a>
+          </div>
+        </div>
+      </div>
+      <ul class="nav_list">
+        <li>
+          <a href="{% url 'dashboard' %}">
+            <i class='bx bxs-dashboard'></i>
+            <span class="links_name">Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'patients' %}">
+            <i class="bx bxs-user"></i>
+            <span class="links_name">Patients</span>
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'health_histories' %}">
+            <i class="bx bx-note"></i>
+            <span class="links_name">Health Histories</span>
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'visits' %}">
+            <i class="bx bxs-home-heart"></i>
+            <span class="links_name">Patients Visits</span>
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'prescriptions' %}">
+            <i class="bx bxs-edit"></i>
+            <span class="links_name">Prescriptions</span>
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'feedbacks' %}">
+            <i class="bx bx-message-rounded-dots"></i>
+            <span class="links_name">Feedbacks</span>
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'staff' %}">
+            <i class="bx bxs-user-badge"></i>
+            <span class="links_name">Staff</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="{% url 'drugs' %}">
+            <i class="bx bxs-capsule"></i>
+            <span class="links_name">Medicine Supply</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="{% url 'order_form' %}">
+            <i class='bx bx-cart-add'></i>
+            <span class="links_name">Order Form</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="http://127.0.0.1:8000/admin/">
+            <i class="bx bx-cog"></i>
+            <span class="links_name">Settings</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

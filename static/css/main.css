@@ -1,0 +1,191 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+:root {
+  --primary-color: #3498db;
+  --secondary-color: #f39c12;
+  --font-family-heading: "Montserrat", sans-serif;
+  --font-family-body: "Raleway", sans-serif;
+}
+
+body {
+  font-family: var(--font-family-body);
+  background-color: #f9f9f9;
+}
+
+/* Update other global styles as needed */
+
+header {
+  background-color: var(--primary-color);
+  color: #fff;
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav {
+  display: flex;
+  align-items: left;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+}
+
+nav li {
+  margin: 0 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+}
+
+.banner {
+  background-image: url("{% static 'img/banner.jpg' %}");
+  background-size: cover;
+  color: #fff;
+  text-align: center;
+  padding: 80px 0;
+}
+
+.banner h2 {
+  font-family: var(--font-family-heading);
+  font-size: 36px;
+  margin: 20px 0;
+}
+
+.banner h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.banner button {
+  background-color: var(--secondary-color);
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.banner button:hover {
+  background-color: #e67e22;
+}
+
+/* Update other sections' styles as needed */
+
+footer {
+  background-color: var(--primary-color);
+  color: #fff;
+  text-align: center;
+  padding: 30px 0;
+}
+
+footer h2 {
+  font-family: var(--font-family-heading);
+  font-size: 24px;
+  margin: 10px 0;
+}
+
+footer p {
+  margin: 10px 0;
+  line-height: 1.6;
+}
+
+.footer-right input[type="text"] {
+  font-size: 16px;
+  padding: 10px;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #fff;
+  background-color: transparent;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.footer-right button {
+  background-color: var(--secondary-color);
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.footer-right button:hover {
+  background-color: #e67e22;
+}
+
+/* Media queries and other styles... */
+.current-news-container {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.current-news-head {
+  animation: marquee 15s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.current-news-head h3 {
+  display: inline-block;
+  padding: 6px;
+  cursor: pointer;
+  position: relative;
+  margin-right: 20px; /* Adjust the spacing between announcements */
+}
+
+.input_box {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input_box input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.input_box label {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: #777;
+}
+
+.input_box i {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #aaa;
+  cursor: pointer;
+}
+
+.password-toggle {
+  cursor: pointer;
+}

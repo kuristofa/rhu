@@ -1,0 +1,239 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mexico Rural Health Unit</title>
+    <link rel="stylesheet" href="{% static 'css/slider.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style></style>
+  </head>
+
+  <body class="font-sans bg-white">
+    <!-- Navigation Bar -->
+    <nav class="bg-green-500">
+      <div class="container mx-auto flex justify-between items-center">
+        <h1 class="text-white text-3xl font-semibold">
+          Mexico Rural Health Unit
+        </h1>
+        <!-- Add navigation links as needed -->
+        {% if user.is_authenticated %}
+        <div class="flex items-center space-x-4">
+          <span class="text-white text-lg">Hello, {{ user.username }}</span>
+          <a href="{% url 'dashboard' %}">
+            <button type="button" class="btn btn-secondary">Dashboard</button>
+          </a>
+          <a href="{% url 'logout' %}">
+            <button
+              type="button"
+              class="btn btn-danger"
+            >
+              Logout
+            </button>
+          </a>
+        </div>
+        {% else %}
+        <a href="{% url 'login' %}">
+          <button
+            type="button"
+            class="btn btn-secondary"
+          >
+            Login
+          </button>
+        </a>
+        {% endif %}
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="mt-5">
+      <div class="mx-auto text-center text-green">
+        <h2 class="text-4xl font-bold mb-2">
+          Providing Quality Healthcare in Rural Areas
+        </h2>
+        <p class="text-lg">
+          Your health is our priority. We are committed to serving the
+          community.
+        </p>
+      </div>
+    </header>
+
+    <section class="container" style="overflow-x: hidden">
+      <div class="slider-wrapper">
+        <div class="slider" id="slider">
+          <div class="slide">
+            <img src="static/img/slider1.png" />
+          </div>
+          <div class="slide">
+            <img src="static/img/slider2.png" />
+          </div>
+          <div class="slide">
+            <img src="static/img/slider3.png" />
+          </div>
+          <div class="slide">
+            <img src="static/img/slider4.png" />
+          </div>
+        </div>
+        <div class="slider-nav">
+          <a href="#" onclick="changeSlide(0)"></a>
+          <a href="#" onclick="changeSlide(1)"></a>
+          <a href="#" onclick="changeSlide(2)"></a>
+          <a href="#" onclick="changeSlide(3)"></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-16">
+      <div class="container mx-auto">
+        <h2 class="text-3xl font-semibold mb-8">About Us</h2>
+        <p class="text-gray-700 leading-relaxed">
+          Welcome to the Mexico Rural Health Unit, where health meets community.
+        </p>
+        <p class="text-gray-700 leading-relaxed mt-2 ">
+          Our mission is to provide comprehensive healthcare services to rural areas across Mexico, ensuring that every individual has access to quality medical care regardless of their location. Nestled within the heart of rural communities, we strive to bridge the gap between urban healthcare standards and the diverse needs of rural populations.
+        </p>
+        <p class="text-gray-700 leading-relaxed mt-2">
+          Our vision is to create healthier, happier, and more resilient rural communities by empowering individuals with the knowledge and resources they need to lead fulfilling lives.
+        </p>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="bg-gray-100 py-16">
+      <div class="container mx-auto">
+        <h2 class="text-3xl font-semibold mb-8">Our Services</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Service Card 1 -->
+          <div class="bg-white p-6 rounded-md shadow-md">
+            <h3 class="text-xl font-semibold mb-4">Primary Care</h3>
+            <p class="text-gray-700">
+              Comprehensive primary care services for individuals and families.
+            </p>
+          </div>
+
+          <!-- Service Card 2 -->
+          <div class="bg-white p-6 rounded-md shadow-md">
+            <h3 class="text-xl font-semibold mb-4">Health Education</h3>
+            <p class="text-gray-700">
+              Educating the community on health and wellness for a healthier
+              lifestyle.
+            </p>
+          </div>
+
+          <!-- Service Card 3 -->
+          <div class="bg-white p-6 rounded-md shadow-md">
+            <h3 class="text-xl font-semibold mb-4">Preventive Care</h3>
+            <p class="text-gray-700">
+              Focus on preventive measures to maintain overall health and
+              well-being.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-md shadow-md">
+            <h3 class="text-xl font-semibold mb-4">Family Planning</h3>
+            <p class="text-gray-700">
+              Support individuals in achieving their desired reproductive goals while promoting the health and well-being of both the individual and the family unit.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-md shadow-md">
+            <h3 class="text-xl font-semibold mb-4">Birthing Facility</h3>
+            <p class="text-gray-700">
+              Dedicated to provide exceptional care and support throughout the childbirth journey. 
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-md shadow-md">
+            <h3 class="text-xl font-semibold mb-4">Disease Prevention and Control</h3>
+            <p class="text-gray-700">
+              Conducting screenings for diseases such as malaria, tuberculosis, and HIV/AIDS, along with implementing preventive measures and providing necessary treatments. 
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-4">
+      <div class="container mx-auto text-center">
+        <p>&copy; 2023 Rural Health Unit. All rights reserved.</p>
+      </div>
+    </footer>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const currentDate = new Date()
+        const currentHour = currentDate.getHours()
+        let greeting
+
+        if (currentHour >= 5 && currentHour < 12) {
+          greeting = 'Good Morning'
+        } else if (currentHour >= 12 && currentHour < 18) {
+          greeting = 'Good Afternoon'
+        } else {
+          greeting = 'Good Evening'
+        }
+
+        // Display the greeting if the user is authenticated
+        const isAuthenticated = '{{ user.is_authenticated }}' === 'True'
+        const username = '{{ request.user.username }}'
+
+        if (isAuthenticated && username) {
+          const greetingMessage = document.createElement('div')
+          greetingMessage.textContent = `${greeting}, ${username}`
+          greetingMessage.className = 'text-white text-lg'
+          document
+            .querySelector('.mx-auto.text-center.text-green')
+            .appendChild(greetingMessage)
+        }
+      })
+    </script>
+
+    <script>
+      let currentSlide = 0
+      const totalSlides = document.querySelectorAll('.slider .slide').length
+      const slider = document.querySelector('.slider')
+
+      function updateSlider() {
+        const newTransformValue = -currentSlide * 100 + '%'
+
+        slider.style.transform = `translateX(${newTransformValue})`
+
+        // Remove 'active' class from all slides
+        document.querySelectorAll('.slider .slide').forEach((slide, index) => {
+          slide.classList.remove('active')
+        })
+
+        // Add 'active' class to the current slide for the fade-in effect
+        document
+          .querySelector(`.slider .slide:nth-child(${currentSlide + 1})`)
+          .classList.add('active')
+      }
+
+      function startAutoSlide() {
+        setInterval(() => {
+          currentSlide = (currentSlide + 1) % totalSlides
+          updateSlider()
+        }, 5000) // Change slide every 5 seconds (adjust as needed)
+      }
+
+      function changeSlide(slideNumber) {
+        currentSlide = slideNumber
+        updateSlider()
+      }
+
+      // Set initial slide position
+      updateSlider()
+
+      // Start automatic sliding on page load
+      startAutoSlide()
+    </script>
+  </body>
+</html>

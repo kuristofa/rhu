@@ -1,0 +1,119 @@
+{% extends "base_layout.html"%}
+{% load static %}
+
+{% block content %}
+{% if user.is_authenticated %}
+    <div class="container-fluid" style="margin-left: 60px;">
+        <div class="row">
+            <div class="col-xl-4 col-md-6 mt-5">
+                <div class="card text-black mb-4" style="background-color: #FFF9E9;">
+                    <div class="card-body">
+                        <h4>Patients</h4>
+                        </div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white btn btn-success stretched-link" href="{% url 'patients' %}">See Patients Details</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-md-6 mt-5">
+                <div class="card text-black mb-4" style="background-color: #FFF9E9;">
+                    <div class="card-body">
+                        <h4>Health Histories</h4>
+                        </div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white btn btn-success stretched-link" href="{% url 'health_histories' %}">See Health Histories</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-md-6 mt-5">
+                <div class="card text-black mb-4" style="background-color: #FFF9E9">
+                    <div class="card-body">
+                        <h4>Patients Visits</h4>
+                        </div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white btn btn-success stretched-link" href="{% url 'visits' %}">See Patients Visits</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+      <div class="row">
+            <div class="col-xl-4 col-md-6 mt-5">
+                <div class="card text-black mb-4" style="background-color: #FFF9E9;">
+                    <div class="card-body">
+                        <h4>Prescriptions</h4>
+                        </div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white btn btn-success stretched-link" href="{% url 'prescriptions' %}">See Prescriptions Details</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-md-6 mt-5">
+                <div class="card text-black mb-4" style="background-color: #FFF9E9;">
+                    <div class="card-body">
+                        <h4>Clinic Staff</h4>
+                        </div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white btn btn-success stretched-link" href="{% url 'staff' %}">See Staff Details</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-md-6 mt-5">
+                <div class="card text-black mb-4" style="background-color: #FFF9E9;">
+                    <div class="card-body">
+                        <h4>Laboratory Reports</h4>
+                        </div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white btn btn-success stretched-link" href="#">See Laboratory Reports Details</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-4 col-md-6 mt-5">
+                <div class="card text-black mb-4" style="background-color: #FFF9E9;">
+                    <div class="card-body">
+                        <h4>Feedbacks</h4>
+                        </div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white btn btn-success stretched-link" href="{% url 'feedbacks' %}">See Feedbacks</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-md-6 mt-5">
+                <div class="card text-black mb-4" style="background-color: #FFF9E9;">
+                    <div class="card-body">
+                        <h4>Medicinal Supply</h4>
+                        </div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white btn btn-success stretched-link" href="{% url 'drugs' %}">See Medicinal Supply Supply</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-md-6 mt-5">
+                <div class="card text-black mb-4" style="background-color: #FFF9E9;">
+                    <div class="card-body">
+                        <h4>Appointments</h4>
+                        </div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white btn btn-success stretched-link" href="{% url 'appointments' %}">See Appointments Details</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    {% else %}
+    {% include "login1.html" %}
+{% endif %}
+{% endblock content %}
