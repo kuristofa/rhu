@@ -130,6 +130,22 @@ def visits(request):
     return render(request, "data/visits.html", context)
 
 def order_form(request):
+    if request.method == 'POST':
+        order_id = request.POST.get('order_id')  # Assuming the order ID is passed in the form data
+        if order_id:
+            order = Order.objects.get(pk=order_id)
+            if order.status != 'Approved':
+                order.status = 'Approved'
+                order.update_drug_quantity()  # Update drug quantity upon approval
+                order.save()
+                return redirect('order_form')  # Redirect to the same page after approval
+            
+    if request.method == 'POST':
+        order_id = request.POST.get('order_id')
+        if order_id:
+            order = Order.objects.get(pk=order_id)
+            order.delete()
+    
     orders = Order.objects.all()  # Fetch all orders
     return render(request, "data/order_form.html", {"orders": orders})
 
@@ -150,7 +166,7 @@ def add_order(request, id=0):
         if form.is_valid():
             form.save()
         return redirect('order_form')
-
+    
 @permission_required("data.add_patientvisit")
 def add_visit(request, id=0):
     if request.method == "GET":

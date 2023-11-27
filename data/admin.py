@@ -36,7 +36,7 @@ class HealthHistoryAdmin(admin.ModelAdmin):
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ("drug", "date_ordered", "quantity", "status")
+    list_display = ("drug", "date_ordered", "supply_unit", "status")
 
 
 admin.site.site_title = "MEXICO RURAL HEALTH UNIT"

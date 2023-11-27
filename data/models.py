@@ -80,8 +80,13 @@ CONTRACT_CHOICES = (
 class Drug(models.Model):
     drug_name = models.CharField(max_length=500)
     supplied_on = models.DateTimeField(default=timezone.now)
-    supply_unit = models.CharField(max_length=300)
+    supply_unit = models.IntegerField(default=0)
     date_recorded = models.DateTimeField(default=timezone.now)
+
+    def update_drug_quantity(self):
+        drug = self.drug
+        drug.quantity += self.quantity  # This line is trying to access 'quantity' in Drug
+        drug.save()
 
     def __str__(self):
         return self.drug_name
@@ -97,8 +102,26 @@ class Prescription(models.Model):
 class Order(models.Model):
     drug = models.ForeignKey(Drug, on_delete=models.CASCADE)
     date_ordered = models.DateTimeField(default=timezone.now)
-    quantity = models.IntegerField(default=1)  # You might want to change this field depending on how you want to track quantities.
+    supply_unit = models.IntegerField(default=1)  # You might want to change this field depending on how you want to track quantities.
     status = models.CharField(max_length=100, choices=STATUS_CHOICES, default='Pending' )  # Default status set to 'Pending'
+
+    def save(self, *args, **kwargs):
+        # Check if the order status has changed to 'Approved'
+        if self.pk:  # Check if the order is an existing instance
+            original_order = Order.objects.get(pk=self.pk)
+            if original_order.status != 'Approved' and self.status == 'Approved':
+                # If the order status changed to 'Approved', update the drug quantity
+                self.update_drug_quantity()
+
+        super(Order, self).save(*args, **kwargs)
+
+    def update_drug_quantity(self):
+        # Fetch the associated drug for this order
+        drug = self.drug
+        # Update the supply_unit of the drug
+        drug.supply_unit += self.supply_unit
+        # Save the updated drug instance
+        drug.save()
 
     def __str__(self):
         return f"Order for {self.drug.drug_name} - Status: {self.status}"

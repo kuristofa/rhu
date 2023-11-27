@@ -31,17 +31,35 @@
             <td>Quantity</td>
             <td>Status</td>
             <td>Delete</td>
+            <td>Update</td>
         </tr>
     </thead>
     <tbody>
         {% for order in orders %}
-           <tr>
-               <td>{{ order.drug }}</td>
-               <td>{{ order.date_ordered }}</td>
-               <td>{{ order.quantity }}</td>
-               <td>{{ order.status }}</td>
-               <td><a href="#" class="btn btn-danger">Delete</a></td>
-           </tr>
+        <tr>
+            <td>{{ order.drug }}</td>
+            <td>{{ order.date_ordered }}</td>
+            <td>{{ order.supply_unit }}</td>
+            <td>{{ order.status }}</td>
+            <td>
+                <form method="post" action="{% url 'order_form' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="order_id" value="{{ order.id }}">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </td>
+            <td>
+                {% if order.status != 'Approved' %}
+                    <form method="post" action="{% url 'order_form' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="order_id" value="{{ order.id }}">
+                        <button type="submit" class="btn btn-success">Approve</button>
+                    </form>
+                {% else %}
+                    <span class="btn btn-success">Approved</span>
+                {% endif %}
+            </td>
+        </tr>
         {% endfor %}
     </tbody>
 </table>
